@@ -1,0 +1,25 @@
+﻿
+
+@using WebsiteThoiTrang.Models;
+@{
+    tblUser kh = (tblUser)Session["Taikhoan"];
+    if (Session["Taikhoan"] == null || Session["Taikhoan"].ToString() == "")
+    {
+        <i class="fas fa-user-plus"></i>
+        <a id="DK" ; href="@Url.Action("DangKy", "Users")">Đăng ký</a>
+        <i class="fas fa-sign-in-alt"></i>
+        <a id="DN" ; href="@Url.Action("DangNhap", "Users")">Đăng nhập</a>
+    }
+    else
+    {
+        <div>
+            <a href="@Url.Action("ProfileUs","GioHang")">
+                <i style="font-size: 16px" class="fas fa-users"></i>  Xin chào, @kh.name
+            </a>
+            <a href="@Url.Action("SignOut","GioHang")" style="border-left: 1px solid black; padding-left: 5px;"> Thoát</a>
+        </div>
+    }
+}
+
+
+

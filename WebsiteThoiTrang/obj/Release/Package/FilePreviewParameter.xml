@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="WebTT" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\AnhQuoc\\documents\\visual\ studio\ 2015\\Projects\\WebsiteThoiTrang\\WebsiteThoiTrang\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\AnhQuoc\\documents\\visual\ studio\ 2015\\Projects\\WebsiteThoiTrang\\WebsiteThoiTrang\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=(LocalDb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-WebsiteThoiTrang-20180319112848.mdf;Initial Catalog=aspnet-WebsiteThoiTrang-20180319112848;Integrated Security=True" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\AnhQuoc\\documents\\visual\ studio\ 2015\\Projects\\WebsiteThoiTrang\\WebsiteThoiTrang\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="WebbanhangConnectionString-Web.config Connection String" description="" value="Data Source=ANHQUOC-PC;Initial Catalog=Webbanhang;User ID=sa;Password=123456" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\AnhQuoc\\documents\\visual\ studio\ 2015\\Projects\\WebsiteThoiTrang\\WebsiteThoiTrang\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='WebbanhangConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

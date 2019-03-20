@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Đăng ký thành viên";
+    Layout = "~/Views/_LayoutUsers.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký thành viên</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link href="~/Content/SignUpCss.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/normalize.css">
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+            <h1>ĐĂNG KÝ THÀNH VIÊN</h1>
+
+            <fieldset>
+                
+                <td>
+                    <label for="name">Họ tên:</label>
+                    <input type="text" id="name" name="user_name">
+                    <div> @ViewData["Loi1"]</div>
+                </td>
+                <td>
+                    <label for="mail">Email:</label>
+                    <input type="email" id="mail" name="user_email">
+                    <div> @ViewData["Loi2"]</div>
+                </td>
+               
+                <td>
+                    <label for="phone">Số điện thoại:</label>
+                    <input style="margin-left:70px;" type="tel" id="phone" name="user_phone" />
+                    <div> @ViewData["Loi3"]</div>
+
+                </td><div style="clear:both"></div>
+
+                <td>
+                    <label for="address">Địa chỉ:</label>
+                    <input type="text" id="address" name="user_address">
+                    <div> @ViewData["Loi4"]</div>
+                </td>
+
+                <td>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="user_password">
+                    <div> @ViewData["Loi5"]</div>
+                </td>
+
+                <td>
+                    <label for="password_accept">Nhập lại password:</label>
+                    <input type="password" id="password_accept" name="user_password_accept">
+                    <div> @ViewData["Loi6"]</div>
+                </td>
+                
+            </fieldset>
+            <button id="btnDK" type="submit">Đăng ký</button>
+         }
+    </body>
+
+</body>
+
+</html>

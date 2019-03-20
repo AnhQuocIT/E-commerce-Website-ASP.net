@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebsiteThoiTrang.Models.tblTran>
+
+@{
+    ViewBag.Title = "Trans";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2>HÓA ĐƠN</h2>
+
+<table class="table">
+    <tr>
+        <th style="width:100px"> Tên KH </th>
+        <th style="width:150px"> Tổng tiền </th>
+        <th style="width:200px"> Thanh toán </th>
+        <th style="width:200px"> Thông tin thanh toán </th>
+        <th style="width:200px"> Ghi chú </th>
+        <th style="width:150px"> Mã bảo vệ </th>
+        <th style="width:200px"> Tình trạng </th>
+        <th style="width:150px"> Ngày giao </th>
+        <th style="width:150px"> Ngày đặt </th>
+        <th style="width:250px"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblUser.name)
+        </td>
+        <td>
+            @String.Format("{0:0,0}", item.amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.payment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.payment_info)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.security)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+        <td>
+            @String.Format("{0:dd/MM/yyyy}", item.delivery_date)
+        </td>
+        <td>
+            @String.Format("{0:dd/MM/yyyy}", item.created)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "EditTrans", new { id=item.id }) |
+            @Html.ActionLink("Chi tiết", "DetailsTrans", new { id = item.id }) |
+            @Html.ActionLink("Xóa", "DeleteTrans", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

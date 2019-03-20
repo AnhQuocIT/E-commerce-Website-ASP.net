@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebsiteThoiTrang.Models.tblProduct>
+
+@{
+    ViewBag.Title = "Hangmoi";
+    Layout = "~/Views/_LayoutUsers.cshtml";
+}
+
+<div class="sanpham">
+    @{int i = 0; }
+    @foreach (var item in Model)
+    {
+        i++;
+        <div class="thumbnail">
+            <a href="@Url.Action("Details", "Home", new { id = item.id })">
+                <img alt="@item.name" src="~/imagesSP/@item.image_link" width="200" />
+                <div>
+                    <br />
+                    <h4 style="text-align:center; margin-top: -3%">
+                        @item.name
+                    </h4>
+                    <p></p>
+                </div>
+            </a>
+            <div id="price">
+                <b id="gia">@String.Format("{0:0,0}", @item.price_after) VNĐ</b>
+                <b style="margin-left:10px;color:white;
+                          background-color: red; font-weight:bold; padding: 4px;
+                          border-radius:10px">-@item.sale_off%</b>
+                        <br />
+                        <del id="sale">@String.Format("{0:0,0}", @item.price) VNĐ</del>
+                    </div>
+                    <div id="info">
+                        <b id="sta">@item.status</b>
+
+                        <b id="count"><b id="view"><i class="fas fa-eye"></i> @item.view_count</b><i class="fas fa-shopping-cart"></i> @item.count_buy</b>
+                    </div>
+                </div>
+
+        if (i % 3 == 0)
+        {
+            <div style="clear:both"></div>
+        }
+    }
+</div>
+

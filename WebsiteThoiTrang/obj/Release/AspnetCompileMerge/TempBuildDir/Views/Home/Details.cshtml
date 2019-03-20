@@ -1,0 +1,71 @@
+﻿
+
+<style type="text/css">
+
+
+    #Datmua a {
+        clear: both;
+        background-color: forestgreen;
+        color: white;
+        width: 120px;
+        height: 40px;
+        display: block;
+        float: right;
+        text-align: center;
+        padding-top: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        width:430px;
+    }
+
+        #Datmua a:hover {
+            background-color: gray;
+            color: red;
+        }
+</style>
+
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.12';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutUsers.cshtml";
+}
+
+<h3 style="text-align:center; color: white; font-weight:bold">THÔNG TIN CHI TIẾT SẢN PHẨM</h3>
+<div>
+    <div style="width:40%; float:left; border-left: dotted 1px; border-color:azure">
+        <img src="~/imagesSP/@Model.image_link" width="100%" />
+    </div>
+    <div style="width:60%; float:left; padding:10px">
+        <h3 style="font-weight:bold; color:lightcoral"> @Model.name </h3>
+        <div style="padding-bottom: 50px; padding-top:10px">
+            <div class="fb-like" data-href="http://shopnam.somee.com/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+        </div>
+        <p style="text-align:justify;; color:white"><Span style="font-weight:bold;"> Mô tả: </Span>@Model.review </p>
+        <p style="font-weight:bold; color:white"> Giá bán: <span style="color:red; font-size:16pt "> @String.Format("{0:0,0}", @Model.price_after) VNĐ
+            <b style="background-color:red; color:white; padding: 5px; border-radius:10px; margin-left:10px">-@Model.sale_off%</b> <br />
+            <del style="font-size:14pt;color: gray; padding-left:100px ">  @String.Format("{0:0,0}", @Model.price) VNĐ</del></span></p>
+    </div>
+    <div>
+        <div id="Datmua">
+            <a href="@Url.Action("Themgiohang", "GioHang", new { @MaSP = @Model.id, @URL=Request.Url.ToString()})">
+                THÊM VÀO GIỎ HÀNG
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+<div style="margin-top: 450px; background: white">
+    <div class="fb-comments" data-href="http://aqshop.somee.com/" data-width="730px" ></div>
+</div>
+

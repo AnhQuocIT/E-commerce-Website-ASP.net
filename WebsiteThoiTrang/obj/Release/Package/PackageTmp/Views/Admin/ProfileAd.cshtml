@@ -1,0 +1,50 @@
+﻿@model WebsiteThoiTrang.Models.tblAdmin
+
+@{
+    ViewBag.Title = "ProfileAd";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2>HỒ SƠ ADMIN</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên đăng nhập:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.username)
+        </dd>
+
+        <dt>
+            Password:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userpassword)
+        </dd>
+
+        <dt>
+            Họ tên ad:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            Ngày tạo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "EditAD", new { id = Model.id }) |
+    @Html.ActionLink("Quay về", "Index")
+</p>

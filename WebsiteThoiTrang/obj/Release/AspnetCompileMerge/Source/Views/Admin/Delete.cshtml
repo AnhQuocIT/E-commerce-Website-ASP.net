@@ -1,0 +1,128 @@
+﻿@model WebsiteThoiTrang.Models.tblProduct
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2>XÓA SẢN PHẨM</h2>
+
+<h3>Bạn có chắc chắn xóa sản phẩm này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Loại sp:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblCatalog.name)
+        </dd>
+
+        <dt>
+            Tên sp:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            Mô tả:
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.review)
+        </dd>
+
+        <dt>
+            Giá gốc:
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.price) VNĐ
+        </dd>
+
+        <dt>
+            Giảm giá
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.sale_off)%
+        </dd>
+
+        <dt>
+            Giá bán:
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.price_after) VNĐ
+        </dd>
+
+        <dt>
+            Ảnh bìa:
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/imagesSP/"+ Model.image_link)" width="95" height="100" />
+        </dd>
+
+        <dt>
+            Ảnh +:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.image_list)
+        </dd>
+
+        <dt>
+            Lượt mua:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.count_buy)
+        </dd>
+
+        <dt>
+            Lượt xem:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.view_count)
+        </dd>
+
+        <dt>
+            Ngày tạo:
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyyy}", Model.created)
+        </dd>
+
+        <dt>
+            Xuất sứ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.country)
+        </dd>
+
+        <dt>
+           Trạng thái:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay về", "SanPham")
+        </div>
+    }
+</div>

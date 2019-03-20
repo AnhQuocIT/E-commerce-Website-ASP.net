@@ -1,0 +1,76 @@
+﻿h1 {
+    text-align:center;
+    color:white;
+    font-weight:bold;
+    border: 1px solid #3ac162;
+    border-width: 1px 1px 3px;
+    box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+    background-color: #4bc970;
+    text-align: center;
+    font-style: normal;
+    padding: 19px 39px 18px 39px;
+    width: 400px;
+    margin-left: 160px;
+    border-top-left-radius: 5px;
+    border-top-right-radius:5px;
+}
+
+fieldset {
+    background-color: whitesmoke;
+    border: none;
+    width: 400px;
+    margin-left: 160px;
+    margin-top: -18.5px;
+}
+
+
+#btnDK {
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  font-weight:bold;
+  background-color: #4bc970;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius:5px;
+  width: 100%;
+  border: 1px solid #3ac162;
+  border-width: 1px 1px 3px;
+  box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
+  margin-bottom: 10px;
+  width: 400px;
+  margin-left: 160px;
+}
+
+#btnDK:hover {
+    background-color:lightgreen;
+}
+
+label {
+    margin-left: 70px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+label.light {
+  font-weight: 300;
+  display: inline;
+}
+
+fieldset input {
+    width: 250px;
+    margin-bottom: 5px;
+    margin-left: 70px;
+}
+
+fieldset div {
+    color:red;
+    margin-left: 80px;
+    font-size:12px;
+}
+
+
+
+
+

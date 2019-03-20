@@ -1,0 +1,48 @@
+﻿@model WebsiteThoiTrang.Models.tblCatalog
+
+@{
+    ViewBag.Title = "DeleteCalg";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2>XÓA DANH MỤC</h2>
+
+<h3>Bạn có chắc chắn muốn xóa danh mục này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên danh mục: 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.parent_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.parent_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.posision)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.posision)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay về", "Catalog")
+        </div>
+    }
+</div>

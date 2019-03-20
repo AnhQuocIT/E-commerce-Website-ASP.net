@@ -1,0 +1,66 @@
+﻿@model WebsiteThoiTrang.Models.tblUser
+
+@{
+    ViewBag.Title = "ProfileUs";
+    Layout = "~/Views/_LayoutUsers.cshtml";
+}
+
+<h2 style="color:white">THÔNG TIN NGƯỜI DÙNG</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal" style="color:white">
+        <dt>
+            Họ tên:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            Email:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            Điện thoại:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>
+            Địa chỉ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            Mật khẩu:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+        <dt>
+            Ngày tạo:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "EditUs", new { id = Model.usersID }) |
+    @Html.ActionLink("Quay về", "Index","Home")
+</p>

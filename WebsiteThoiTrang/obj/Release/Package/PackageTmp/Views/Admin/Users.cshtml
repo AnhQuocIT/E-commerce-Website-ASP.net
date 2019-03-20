@@ -1,0 +1,45 @@
+﻿@model IEnumerable<WebsiteThoiTrang.Models.tblUser>
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2>THÀNH VIÊN</h2>
+
+<table class="table">
+    <tr>
+        <th style="width:200px"> Tên người dùng </th>
+        <th style="width:200px"> Email </th>
+        <th style="width:250px"> Điện thoại </th>
+        <th style="width:200px"> Địa chỉ </th>
+        <th style="width:110px"> Ngày tạo </th>
+        <th style="width:200px"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @String.Format("{0:dd/MM/yyyy}", item.created)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "EditUser", new { id=item.usersID }) |
+            @Html.ActionLink("Chi tiết", "DetailsUser", new { id=item.usersID }) |
+            @Html.ActionLink("Xóa", "DeleteUser", new { id=item.usersID })
+        </td>
+    </tr>
+}
+
+</table>

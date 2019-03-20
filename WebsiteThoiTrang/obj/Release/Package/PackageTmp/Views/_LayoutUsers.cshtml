@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop thời trang nam</title>
+    <link href="~/Content/UserCss.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <link href="~/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="~/Nivo slider/jquery.nivo.slider.js"></script>
+    <script src="~/Nivo slider/jquery.nivo.slider.pack.js"></script>
+    <link href="~/Nivo slider/nivo-slider.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <div id="header-info">
+                <div id="phone">
+                    <i class="fas fa-phone"></i>
+                    Hotline: 012.345.6789
+                </div>
+                @*<div id="Giohang">
+                    @Html.Action("GioHangPartial", "GioHang")
+                </div>*@
+                <div class="DangKyDangNhap">
+                     @Html.Action("TenUsers", "GioHang")                 
+                </div>
+            </div>
+            <div id="banner">
+                @*Nivo slider*@
+                <div id="slider" class="nivoSlider">
+                    <img src="~/Nivo slider/images/banner-1.jpg" />
+                    <img src="~/Nivo slider/images/banner-2.png" />
+                    <img src="~/Nivo slider/images/banner-3.jpg" />
+                </div>
+                <div id="htmlcaption" class="nivo-html-caption">
+                    <strong>This</strong> is an example of a <em>HTML</em> caption with <a href="#">a link</a>.
+                </div>
+            </div>
+                <nav class="menu">
+                    <div id="search">
+                        @using (Html.BeginForm("KQTimKiem", "TimKiem", FormMethod.Post))
+                        {
+                            <div class="c-search">
+                                <input type="search" id="search" name="txtsearch" placeholder="Nhập sản phẩm cần tìm..." />
+                                <button class="icon"><i class="fas fa-search fa-lg"></i></button>
+                            </div>
+                        }
+                    </div>
+                    
+                    <ul class="navmenu">
+
+                        <a href="@Url.Action("Index", "Home")"><li><i class="fas fa-home fa-lg"></i></li></a>
+
+
+                        <a href="@Url.Action("Hangmoi", "Home")"><li>Hàng mới về</li></a>
+
+
+                        <a href="@Url.Action("Hangchay", "Home")"><li>Hàng bán chạy </li></a>
+
+
+                        <a href="@Url.Action("Help", "Home")"><li style="margin-left:0px;">Trợ giúp</li></a>
+
+                    </ul>
+                    <div style="clear:both"></div>
+                </nav>
+        </div>
+        <div id="content">
+            <div id="left">
+                <div class="catalog">
+                    <div>
+                        @Html.Action("Catalogs", "Home")
+                    </div>     
+                    <dd style="background-image: url('../image/background_p1_1.jpg'); height: 45px;"></dd>  
+                </div>
+                <div class="Giohang">
+                    @Html.Action("GioHangPartial", "GioHang")
+                </div>
+            </div>
+            
+            <div id="right" style="border:none">
+                <div>
+                    @RenderBody()
+                </div>
+            </div>
+            <div class="clear">
+
+            </div>
+        </div>
+        <div id="footer">
+            <p>Design by <a href="@Url.Action("SignOut","Admin")">AnhQuoc + MinhDuc</a></p>
+        </div>
+
+    </div>
+
+    @*Javascript for nivoslider*@
+    <script type="text/javascript">
+        $(window).on('load', function() {
+            $('#slider').nivoSlider({
+                controlNav: false,
+                prevText: '',
+                nextText: '',
+            });
+        });
+    </script>
+
+    @*Javascript for sticky menu*@
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            var $filter = $('.menu');
+            var $filterSpacer = $('<div />', {
+                "class": "vnkings-spacer",
+                "height": $filter.outerHeight()
+            });
+            if ($filter.size())
+            {
+                $(window).scroll(function ()
+                {
+                    if (!$filter.hasClass('fix') && $(window).scrollTop() > $filter.offset().top)
+                    {
+                        $filter.before($filterSpacer);
+                        $filter.addClass("fix");
+                    }
+                    else if ($filter.hasClass('fix')  && $(window).scrollTop() < $filterSpacer.offset().top)
+                    {
+                        $filter.removeClass("fix");
+                        $filterSpacer.remove();
+                    }
+                });
+            }
+
+        });
+    </script>
+
+</body>
+</html>
+
