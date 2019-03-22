@@ -1,0 +1,39 @@
+﻿@model IEnumerable<WebsiteThoiTrang.Models.tblCatalog>
+
+@{
+    ViewBag.Title = "Catalog";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2>DANH MỤC</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "ThemCalg")
+</p>
+<table class="table">
+    <tr>
+        <th style="width:200px"> Tên loại </th>
+        <th style="width:200px"> Danh muc cha - con </th>
+        <th style="width:200px"> Vị trí </th>
+        <th style="width:200px"></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.parent_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.posision)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "EditCalg", new { id=item.id }) |
+            @Html.ActionLink("Xóa", "DeleteCalg", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
