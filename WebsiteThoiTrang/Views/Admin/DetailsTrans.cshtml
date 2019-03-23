@@ -1,0 +1,47 @@
+﻿@model IEnumerable<WebsiteThoiTrang.Models.tblOrder>
+
+@{
+    ViewBag.Title = "DetailsTrans";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2>CHI TIẾT HÓA ĐƠN</h2>
+
+<table class="table">
+    <tr>
+        <th style="width:100px"> Mã HD </th>
+        <th style="width:100px"> Mã SP </th>
+        <th style="width:300px"> Tên SP </th>
+        <th style="width:200px"> Số lượng </th>
+        <th style="width:200px"> Đơn giá </th>
+        <th style="width:200px"> Trạng thái </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trans_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tblProduct.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.number)
+        </td>
+        <td>
+            @String.Format("{0:0,0}", item.amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.status)
+        </td>
+
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Quay về", "Trans")
+</div>

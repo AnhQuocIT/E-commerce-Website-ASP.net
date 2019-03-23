@@ -1,0 +1,96 @@
+﻿@model WebsiteThoiTrang.Models.tblTran
+
+@{
+    ViewBag.Title = "DeleteTrans";
+    Layout = "~/Views/_LayoutAdmin.cshtml";
+}
+
+<h2>XÓA ĐƠN HÀNG</h2>
+
+<h3>Bạn có chắc chắn muốn xóa đơn hàng này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên KH:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tblUser.name)
+        </dd>
+
+        <dt>
+            Tổng tiền:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.amount)
+        </dd>
+
+        <dt>
+            Thanh toán:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.payment)
+        </dd>
+
+        <dt>
+            Thông tin thanh toán:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.payment_info)
+        </dd>
+
+        <dt>
+            Ghi chú
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+
+        <dt>
+            Mã bảo vệ:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.security)
+        </dd>
+
+        <dt>
+            Trạng thái:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+        <dt>
+            Ngày giao:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.delivery_date)
+        </dd>
+
+        <dt>
+            Ngày đặt
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.created)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay về", "Trans")
+        </div>
+    }
+</div>
