@@ -298,6 +298,136 @@ namespace WebsiteThoiTrang.Controllers
                 ViewBag.Thongbao = "*Tên đăng nhập hoặc mật khẩu không đúng!";
             return View();
         }
+
+                public ActionResult Trans()
+        {
+            return View(data.tblTrans.ToList());
+        }
+
+        public ActionResult DetailsUser(int id)
+        {
+            tblUser us = data.tblUsers.SingleOrDefault(n => n.usersID == id);
+            if(us == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(us);
+        }
+
+        public ActionResult DetailsTrans(int id)
+        {
+            return View(data.tblOrders.Where(a=>a.Trans_id == id).ToList());
+        }
+
+        [HttpGet]
+        public ActionResult DeleteUser(int id)
+        {
+            tblUser us = data.tblUsers.SingleOrDefault(n => n.usersID == id);
+
+            if (us == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(us);
+        }
+
+        [HttpPost]
+        [ActionName("DeleteUser")]
+        public ActionResult XNXoaU(int id)
+        {
+            tblUser us = data.tblUsers.SingleOrDefault(n => n.usersID == id);
+
+            if (us == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.tblUsers.DeleteOnSubmit(us);
+            data.SubmitChanges();
+            return RedirectToAction("Users");
+        }
+
+         [HttpGet]
+        public ActionResult DeleteTrans(int id)
+        {
+            tblTran tr = data.tblTrans.SingleOrDefault(n => n.id == id);
+
+            if (tr == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(tr);
+        }
+
+        [HttpPost]
+        [ActionName("DeleteTrans")]
+        public ActionResult XNXoaT(int id)
+        {
+            tblTran tr = data.tblTrans.SingleOrDefault(n => n.id == id);
+
+            if (tr == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.tblTrans.DeleteOnSubmit(tr);
+            
+            data.SubmitChanges();
+            return RedirectToAction("Trans");
+        }
+
+        [HttpGet]
+        public ActionResult EditUser(int id)
+        {
+            tblUser us = data.tblUsers.SingleOrDefault(n => n.usersID == id);
+            if (us == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(us);
+        }
+
+        [HttpPost]
+        [ActionName("EditUser")]
+        public ActionResult XNLuuUser(int id)
+        {
+            tblUser us = data.tblUsers.SingleOrDefault(n => n.usersID == id);
+            if (ModelState.IsValid)
+            {
+                UpdateModel(us);
+                data.SubmitChanges();
+            }
+            return RedirectToAction("Users");
+        }
+
+        [HttpGet]
+        public ActionResult EditTrans(int id)
+        {
+            tblTran tr = data.tblTrans.SingleOrDefault(n => n.id == id);
+            if (tr == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(tr);
+        }
+
+        [HttpPost]
+        [ActionName("EditTrans")]
+        public ActionResult XNLuuT(int id, FormCollection col)
+        {
+            tblTran tr = data.tblTrans.SingleOrDefault(n => n.id == id);
+            if (ModelState.IsValid)
+            {
+                UpdateModel(tr);
+                data.SubmitChanges();
+            }
+            return RedirectToAction("Trans");
+        }
 	
     }
 }
