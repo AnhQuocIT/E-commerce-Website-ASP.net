@@ -459,6 +459,11 @@ namespace WebsiteThoiTrang.Controllers
             }
             return RedirectToAction("Trans");
         }
+
+        public ActionResult Users()
+        {
+            return View(data.tblUsers.ToList());
+        }
 	
     }
 }
