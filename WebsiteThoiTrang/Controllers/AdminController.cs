@@ -214,6 +214,90 @@ namespace WebsiteThoiTrang.Controllers
             return RedirectToAction("Catalog");
         }
 
+        [HttpGet]
+        public ActionResult ThemAd()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ThemAd(tblAdmin ad)
+        {
+            if (ModelState.IsValid)
+            {
+                ad.created = DateTime.Now;
+                data.tblAdmins.InsertOnSubmit(ad);
+                data.SubmitChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult ProfileAd()
+        {
+            tblAdmin ad = (tblAdmin)Session["TKadmin"];
+            if (ad == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(ad);
+        }
+
+        [HttpGet]
+        public ActionResult EditAd(int id)
+        {
+            tblAdmin ad = (tblAdmin)Session["TKadmin"];
+            ad = data.tblAdmins.SingleOrDefault(n => n.id == id);
+            if (ad == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(ad);
+        }
+
+        [HttpPost]
+        [ActionName("EditAD")]
+        public ActionResult XNLuuAd(int id)
+        {
+            tblAdmin ad = (tblAdmin)Session["TKadmin"];
+            ad = data.tblAdmins.SingleOrDefault(n => n.id == id);
+            if (ModelState.IsValid)
+            {
+                UpdateModel(ad);
+                data.SubmitChanges();
+            }
+            return RedirectToAction("ProfileAd");
+        }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult SignOut()
+        {
+            Session["TKadmin"] = null;
+            return RedirectToAction("Login");
+        }
+
+        [HttpPost]
+
+        public ActionResult Login(FormCollection collection)
+        {
+            var ten = collection["username"];
+            var pass = collection["pass"];
+            tblAdmin ad = data.tblAdmins.SingleOrDefault(n => n.username == ten && n.userpassword == pass);
+            if (ad != null)
+            {
+                Session["TKadmin"] = ad;
+                return RedirectToAction("Index", "Admin");
+            }
+            else
+                ViewBag.Thongbao = "*Tên đăng nhập hoặc mật khẩu không đúng!";
+            return View();
+        }
 	
     }
 }
