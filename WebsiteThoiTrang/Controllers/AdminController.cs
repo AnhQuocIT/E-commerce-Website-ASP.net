@@ -304,6 +304,37 @@ namespace WebsiteThoiTrang.Controllers
             return View(data.tblTrans.ToList());
         }
 
+        [HttpGet]
+        public ActionResult Delete(string id)
+        {
+             tblProduct sp = data.tblProducts.SingleOrDefault(n => n.id == id);
+             ViewBag.Masp = sp.id;
+                if (sp == null)
+                    {
+                        Response.StatusCode = 404;
+                        return null;
+                    }
+                    return View(sp);
+                }
+
+        [HttpPost]
+        [ActionName("Delete")]
+
+        public ActionResult XNXoa(string id)
+        {
+            tblProduct sp = data.tblProducts.SingleOrDefault(n => n.id == id);
+            ViewBag.Masp = sp.id;
+                if (sp == null)
+                    {
+                        Response.StatusCode = 404;
+                        return null;
+                    }
+
+            data.tblProducts.DeleteOnSubmit(sp);
+            data.SubmitChanges();
+            return RedirectToAction("SanPham");
+        }
+
         public ActionResult DetailsUser(int id)
         {
             tblUser us = data.tblUsers.SingleOrDefault(n => n.usersID == id);
