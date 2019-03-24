@@ -284,6 +284,7 @@ namespace WebsiteThoiTrang.Controllers
 
         [HttpPost]
 
+        //Da fix truyen du lieu
         public ActionResult Login(FormCollection collection)
         {
             var ten = collection["username"];
