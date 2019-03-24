@@ -304,6 +304,8 @@ namespace WebsiteThoiTrang.Controllers
             return View(data.tblTrans.ToList());
         }
 
+
+        //Thêm chức năng cho danh mục và sản phẩm
         [HttpGet]
         public ActionResult Delete(string id)
         {
@@ -460,10 +462,16 @@ namespace WebsiteThoiTrang.Controllers
             return RedirectToAction("Trans");
         }
 
+
         public ActionResult Users()
         {
             return View(data.tblUsers.ToList());
         }
+
+
+
+
+
 	
     }
 }
